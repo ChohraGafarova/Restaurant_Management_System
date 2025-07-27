@@ -1,0 +1,51 @@
+package com.restaurant.restaurantmanagementsystem.mapper;
+
+import com.restaurant.restaurantmanagementsystem.dto.OrderDTO;
+import com.restaurant.restaurantmanagementsystem.entity.OrderEntity;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2025-05-09T20:33:27+0400",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.13.jar, environment: Java 17.0.14 (Amazon.com Inc.)"
+)
+@Component
+public class OrderMapperImpl implements OrderMapper {
+
+    @Override
+    public OrderDTO toDto(OrderEntity order) {
+        if ( order == null ) {
+            return null;
+        }
+
+        OrderDTO orderDTO = new OrderDTO();
+
+        orderDTO.setOrderId( order.getOrderId() );
+        orderDTO.setCustomerId( order.getCustomerId() );
+        orderDTO.setEmployeeId( order.getEmployeeId() );
+        orderDTO.setOrderDate( order.getOrderDate() );
+        orderDTO.setTotalAmount( order.getTotalAmount() );
+
+        return orderDTO;
+    }
+
+    @Override
+    public OrderEntity toEntity(OrderDTO dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        OrderEntity.OrderEntityBuilder orderEntity = OrderEntity.builder();
+
+        orderEntity.orderId( dto.getOrderId() );
+        orderEntity.customerId( dto.getCustomerId() );
+        orderEntity.employeeId( dto.getEmployeeId() );
+        orderEntity.orderDate( dto.getOrderDate() );
+        if ( dto.getTotalAmount() != null ) {
+            orderEntity.totalAmount( dto.getTotalAmount() );
+        }
+
+        return orderEntity.build();
+    }
+}

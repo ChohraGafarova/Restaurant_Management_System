@@ -1,0 +1,77 @@
+package com.restaurant.restaurantmanagementsystem.mapper;
+
+import com.restaurant.restaurantmanagementsystem.dto.MenuItemDTO;
+import com.restaurant.restaurantmanagementsystem.entity.MenuItemEntity;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2025-05-09T20:33:27+0400",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.13.jar, environment: Java 17.0.14 (Amazon.com Inc.)"
+)
+@Component
+public class MenuItemMapperImpl implements MenuItemMapper {
+
+    @Override
+    public MenuItemDTO toDto(MenuItemEntity item) {
+        if ( item == null ) {
+            return null;
+        }
+
+        MenuItemDTO menuItemDTO = new MenuItemDTO();
+
+        menuItemDTO.setId( item.getId() );
+        menuItemDTO.setName( item.getName() );
+        menuItemDTO.setPrice( item.getPrice() );
+        menuItemDTO.setCategory( item.getCategory() );
+
+        return menuItemDTO;
+    }
+
+    @Override
+    public MenuItemEntity toEntity(MenuItemDTO dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        MenuItemEntity.MenuItemEntityBuilder menuItemEntity = MenuItemEntity.builder();
+
+        menuItemEntity.id( dto.getId() );
+        menuItemEntity.name( dto.getName() );
+        menuItemEntity.price( dto.getPrice() );
+        menuItemEntity.category( dto.getCategory() );
+
+        return menuItemEntity.build();
+    }
+
+    @Override
+    public List<MenuItemDTO> toDtoList(List<MenuItemEntity> entities) {
+        if ( entities == null ) {
+            return null;
+        }
+
+        List<MenuItemDTO> list = new ArrayList<MenuItemDTO>( entities.size() );
+        for ( MenuItemEntity menuItemEntity : entities ) {
+            list.add( toDto( menuItemEntity ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<MenuItemEntity> toEntityList(List<MenuItemDTO> dtos) {
+        if ( dtos == null ) {
+            return null;
+        }
+
+        List<MenuItemEntity> list = new ArrayList<MenuItemEntity>( dtos.size() );
+        for ( MenuItemDTO menuItemDTO : dtos ) {
+            list.add( toEntity( menuItemDTO ) );
+        }
+
+        return list;
+    }
+}

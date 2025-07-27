@@ -1,0 +1,47 @@
+package com.restaurant.restaurantmanagementsystem.mapper;
+
+import com.restaurant.restaurantmanagementsystem.dto.UserDTO;
+import com.restaurant.restaurantmanagementsystem.entity.UserEntity;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2025-05-09T20:33:26+0400",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.13.jar, environment: Java 17.0.14 (Amazon.com Inc.)"
+)
+@Component
+public class UserMapperImpl implements UserMapper {
+
+    @Override
+    public UserDTO toDto(UserEntity user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        UserDTO userDTO = new UserDTO();
+
+        userDTO.setId( user.getId() );
+        userDTO.setUsername( user.getUsername() );
+        userDTO.setRole( user.getRole() );
+
+        return userDTO;
+    }
+
+    @Override
+    public UserEntity toEntity(UserDTO dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        UserEntity.UserEntityBuilder userEntity = UserEntity.builder();
+
+        if ( dto.getId() != null ) {
+            userEntity.id( dto.getId() );
+        }
+        userEntity.username( dto.getUsername() );
+        userEntity.role( dto.getRole() );
+
+        return userEntity.build();
+    }
+}
